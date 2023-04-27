@@ -38,19 +38,20 @@ class FileChooser(QWidget):
             return
         if self.filename.endswith(".xls") or self.filename.endswith(".xlsx"):
             self.loadedfilename = self.filename.rsplit('/')
-            self.newfilename = "Excel Datei {fn} erfolgreich geladen!".format(fn='"'+self.loadedfilename[-1]+'"')
+            self.newfilename = "Excel Datei {fn} erfolgreich geladen!".format(fn='"' + self.loadedfilename[-1] + '"')
             self.DataLabel.setText(self.newfilename)
             self.data = pd.read_excel('{file}'.format(file=self.filename))
 
     def auswertung(self):
+
+        # Abfangen bei fehlerhafter Benutzung der GUI
         if self.filename is None:
             self.KiResult.setText("Bitte wählen Sie zuerst eine Datei aus")
-
+        # Abfangen falsch ausgewählter Excel-Dateien
         elif self.data.columns.size != 13:
-            self.KiResult.setText("Die ausgewählt Datei entspricht nicht dem vorgegebenem Format (15 Spalten)\nBitte überprüfen Sie die ausgewählte Datei")
-
+            self.KiResult.setText(
+                "Die ausgewählt Datei entspricht nicht dem vorgegebenem Format (15 Spalten)\nBitte überprüfen Sie die ausgewählte Datei")
         else:
-
             pd.set_option('display.expand_frame_repr', False)
             # Die Office-ID der Lehrkraft wird in unserem Fall nicht benötigt, da nur eine Lehrkraft die Umfragen
             # durchgeführt hat. Da diese aber in Zukunft von Nutzen sein könnte, wird diese in der Umfrage verbleiben.
@@ -101,13 +102,12 @@ class FileChooser(QWidget):
             temp = pd.get_dummies(temp1, drop_first=True)
             data = pd.concat([data, temp], axis=1)
             # Spalte 14 --- Wurde Ihr Lernerfolg durch den Einsatz des digitalen Tools gefördert?
-            #temp = self.data.iloc[0:self.data.shape[0], 13]
-            #data = pd.concat([data, temp], axis=1)
+            # temp = self.data.iloc[0:self.data.shape[0], 13]
+            # data = pd.concat([data, temp], axis=1)
             # Spalte 15 als Label --- Würden Sie sich einen häufigeren Einsatz digitaler Tools im Unterricht wünschen?
-            #label = self.data.iloc[0:self.data.shape[0], 13]
+            # label = self.data.iloc[0:self.data.shape[0], 13]
 
-
-        # XGBRegressor mit 150 Bäumen, einer max_depth von 5, learning_rate von 0.05 und early_stopping_rounds i.h.v. 15
+            # XGBRegressor mit 150 Bäumen, einer max_depth von 5, learning_rate von 0.05 und early_stopping_rounds i.h.v. 15
             model = XGBRegressor()
             model.load_model('model.json')
             prediction = model.predict(data)
@@ -115,7 +115,3 @@ class FileChooser(QWidget):
             star = numpy.mean(prediction)
             self.KiResult.setText("Die ermittelte Eignung des Einsatzes des digitalen Tools in Ihrer Klasse beträgt:"
                                   "\n{:.1f} / 6 Sterne".format(star))
-
-            print(data)
-            print(prediction)
-            print(self.data.columns.size)
