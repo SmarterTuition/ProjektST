@@ -7,10 +7,10 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 
 
-class FileChooser2(QWidget):
+class KITraining(QWidget):
 
     def __init__(self, parent=None):
-        super(FileChooser2, self).__init__(parent)
+        super(KITraining, self).__init__(parent)
 
         self.path = None
         self.fileType = None
@@ -67,7 +67,8 @@ class FileChooser2(QWidget):
             # Spalte 5 --- (Ein sehr guter Ausbildungsabschluss ist für mich sehr wichtig)
             data = self.data.iloc[:, 1:5]
             # Spalte 6 OHE --- (Geschlecht)
-            temp = pd.get_dummies(pd.Categorical(self.data.iloc[:, 5], categories=["weiblich", "männlich"]), dtype=int, drop_first=True)
+            temp = pd.get_dummies(pd.Categorical(self.data.iloc[:, 5], categories=["weiblich", "männlich"]), dtype=int,
+                                  drop_first=True)
             data = pd.concat([data, temp], axis=1)
             # Spalte 7 --- Alter
             temp = self.data.iloc[:, 6]
@@ -105,7 +106,8 @@ class FileChooser2(QWidget):
                                                                                     "Mittlere Reife Mittelschule",
                                                                                     "Allgemeine Fachhochschulreife",
                                                                                     "Allgemeine Hochschulreife (Abitur)",
-                                                                                    "Fachgebundene Fachhochschulreife"]), dtype=int,
+                                                                                    "Fachgebundene Fachhochschulreife"]),
+                                  dtype=int,
                                   drop_first=True)
             data = pd.concat([data, temp], axis=1)
             # Spalte 14 --- Wurde Ihr Lernerfolg durch den Einsatz des digitalen Tools gefördert?
@@ -124,7 +126,7 @@ class FileChooser2(QWidget):
             # KI trainieren mit zwei Tabellen
             model.fit(train_vars, train_values, eval_set=[(train_vars, train_values), (test_vars, test_values)],
                       verbose=True)
-            
+
             # KI Model speichern
             model.save_model("model.json")
 
