@@ -12,6 +12,6 @@ Projektbeschreibung
 Das Projekt umfasst die Erstellung, Ausarbeitung und Durchführung einer anonymisierten Umfrage und deren Auswertung mit Hilfe einer eigenständig programmierten Künstlichen Intelligenz, sowie die Erstellung einer zugehörigen GUI und der Implementierung benötigter Schnittstellen. Die Umfrage wird an den Berufsschulklassen der Staatlichen Berufsschule Herzogenaurach durchgeführt und beinhaltet Fragen zur Selbstklassifizierung der Schüler/innen und eine Bewertung des Einsatzes des digitalen Tools H5P im Unterricht.
 
 
-Projektziele
+Projektziel
 
 Ziel des abgeschlossenen Projekts ist, dass die Lehrkräfte mit einem Tool ausge- stattet werden, welches ihnen die Anpassung des Unterrichtes an die individuellen Bedürfnisse der Klassen erleichtert.
