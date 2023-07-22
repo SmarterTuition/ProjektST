@@ -1,5 +1,6 @@
 # ProjektST
 Projekt Smarter Tuition by Nadja Merkl &amp; Vincent Gundelwein
+Code: Vincent Gundelwein
 
 
 Anlass des Projekts
