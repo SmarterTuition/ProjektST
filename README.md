@@ -16,3 +16,9 @@ Das Projekt umfasst die Erstellung, Ausarbeitung und Durchführung einer anonymi
 Projektziel
 
 Ziel des abgeschlossenen Projekts ist, dass die Lehrkräfte mit einem Tool ausge- stattet werden, welches ihnen die Anpassung des Unterrichtes an die individuellen Bedürfnisse der Klassen erleichtert.
+
+Ablauf
+
+Mittels der cloudbasierten Software „Microsoft Power Automate“ werden die Ergebnisse der MS-Forms Umfrage bei dem Absenden automatisch in eine Excel-Datei übertragen.
+Über die Benutzerschnittstelle findet die Verbindung der verschiedenen Elemente des Projekts statt. 
+Hier wird von dem Benutzer, die aus der Umfrage erstellte Exceltabelle ausgewählt und an die KI weitergeleitet. Das von der KI vorhergesagte Ergebnis wird in einem Pop-Up-Fenster erscheinen.
